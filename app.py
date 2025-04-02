@@ -15,11 +15,11 @@ from langchain_core.vectorstores import InMemoryVectorStore
 vector_store = InMemoryVectorStore(embeddings)
 
 # Define document loader to load PDFs
-from langchain_community.document_loaders import PyPDFLoader
+from langchain_community.document_loaders import PyPDFDirectoryLoader
 
 docs = []
 
-loader = PyPDFLoader(file_path = "./path/to/data.pdf")
+loader = PyPDFDirectoryLoader("data/")
 docs_lazy = loader.lazy_load()
 for doc in docs_lazy:
     docs.append(doc)
